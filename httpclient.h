@@ -20,36 +20,36 @@ typedef uint32_t http_req_t;
 
 typedef enum
 {
-  HTTP_SUCCESS = 0,
-  HTTP_EMPTY_BODY,
-  HTTP_ERR_OPENING_SOCKET,
-  HTTP_ERR_DISSECT_ADDR,
-  HTTP_ERR_NO_SUCH_HOST,
-  HTTP_ERR_CONNECTING,
-  HTTP_ERR_WRITING,
-  HTTP_ERR_READING,
-  HTTP_ERR_OUT_OF_MEM,
-  HTTP_ERR_BAD_HEADER,
-  HTTP_ERR_TOO_MANY_REDIRECTS,
-  HTTP_ERR_IS_HTTPS
+    HTTP_SUCCESS = 0,
+    HTTP_EMPTY_BODY,
+    HTTP_ERR_OPENING_SOCKET,
+    HTTP_ERR_DISSECT_ADDR,
+    HTTP_ERR_NO_SUCH_HOST,
+    HTTP_ERR_CONNECTING,
+    HTTP_ERR_WRITING,
+    HTTP_ERR_READING,
+    HTTP_ERR_OUT_OF_MEM,
+    HTTP_ERR_BAD_HEADER,
+    HTTP_ERR_TOO_MANY_REDIRECTS,
+    HTTP_ERR_IS_HTTPS
 } http_ret_t;
 
 
-typedef struct 
+typedef struct
 {
-  char* content_type;
-  char* encoding;
-  uint16_t status_code;
-  char* status_text;
-  char* redirect_addr;
+    char* content_type;
+    char* encoding;
+    uint16_t status_code;
+    char* status_text;
+    char* redirect_addr;
 } http_header_t;
 
 typedef struct
 {
-  http_header_t* p_header;
-  uint32_t length;
-  char* contents;
-  http_ret_t status;
+    http_header_t* p_header;
+    uint32_t length;
+    char* contents;
+    http_ret_t status;
 } http_response_t;
 
 
@@ -59,8 +59,11 @@ typedef struct
 * @param http_req: HTTP request type, any of the HTTP_REQ_* defines in the module
 * @param header_lines: Array of additional HTTP header lines to be added to the header.
 * A NULL pointer indicates no additional header lines.
-* @param header_line_count: number of elements in header_lines array. 
+* @param header_line_count: number of elements in header_lines array.
 */
+
+int ft_http_init();
+
 http_response_t* http_request(char* const address, const http_req_t http_req, char** header_lines, size_t header_line_count);
 
 /**
